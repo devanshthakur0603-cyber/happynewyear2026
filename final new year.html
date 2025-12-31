@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026 ❤️</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+<!-- Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Satoshi', sans-serif;
+  background: #0c0a09;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  color: #f5f5f5;
+}
+
+/* Aurora Background */
+.aurora {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, hsla(333,70%,55%,.4), transparent 40%),
+    radial-gradient(circle at 80% 20%, hsla(282,82%,54%,.3), transparent 40%),
+    radial-gradient(circle at 30% 80%, hsla(210,89%,60%,.3), transparent 40%),
+    radial-gradient(circle at 70% 70%, hsla(35,90%,60%,.3), transparent 40%);
+  animation: aurora 20s ease-in-out infinite alternate;
+  z-index: -2;
+}
+@keyframes aurora { 0% { filter: blur(40px); } 100% { filter: blur(70px); } }
+
+canvas { position: fixed; inset: 0; z-index: -1; }
+
+/* Glass Card */
+.card {
+  background: rgba(20,20,20,0.55);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 26px;
+  padding: 2.5rem;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  display: none;
+  margin: 4rem auto;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(90deg,#ffb6c1,#fff,#ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+  margin-top: 1.5rem;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#ff4d6d,#ff758f);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 25px rgba(255,100,130,.6);
+  transition: .3s;
+}
+.btn:hover { transform: scale(1.05) translateY(-2px); }
+
+/* Polaroids */
+.polaroid {
+  background: white;
+  padding: 14px;
+  border-radius: 10px;
+  color: #000;
+  width: 320px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.polaroid img { width: 100%; height: 360px; object-fit: cover; border-radius: 8px; }
+.polaroid p { margin-top: 10px; font-weight: 500; text-align: center; }
+.polaroid:hover { transform: scale(1.05); box-shadow: 0 40px 90px rgba(0,0,0,.8); }
+@media (max-width: 640px) { .polaroid { width: 90%; } .polaroid img { height: 320px; } }
+
+/* Love note pulse */
+#unlockNote { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+</style>
+</head>
+
+<body>
+
+<div class="aurora"></div>
+<canvas id="bg"></canvas>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="high-on-you-jind-universe-latest-punjabi-love-song-2024-jind-universe_P6vY4rH9.mp3" type="audio/mpeg">
+</audio>
+
+<div id="steps">
+
+<!-- STEP 1 -->
+<div class="card step">
+  <div class="text-center">
+    <div class="text-5xl mb-4">❤️</div>
+    <h1 class="text-4xl mb-4">Hey My Love, Shreya</h1>
+    <p>I made this little world just for you… before we step into 2026 together.</p>
+    <button class="btn" onclick="next()">Come With Me</button>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="card step">
+  <div class="text-center">
+    <div class="text-5xl mb-4">🎆</div>
+    <h1 class="text-4xl mb-4">Happy New Year 2026 ❤️</h1>
+    <p>Another year begins, and my favorite part is knowing you’re in it with me.</p>
+    <button class="btn" onclick="next()">There’s More</button>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="card step">
+  <h2 class="text-3xl mb-6 text-center">Why I Love You</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="p-4 rounded-xl bg-white/5">✨ Your Heart — It makes my world feel safe.</div>
+    <div class="p-4 rounded-xl bg-white/5">😊 Your Smile — Still undefeated.</div>
+    <div class="p-4 rounded-xl bg-white/5 md:col-span-2">🌟 Our Future — With you, everything feels possible.</div>
+  </div>
+  <div class="text-center">
+    <button class="btn" onclick="next()">Remember This</button>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="card step">
+  <h2 class="text-3xl mb-8 text-center">Moments I’ll Carry Into 2026 ❤️</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+    <div class="polaroid"><img src="https://i.ibb.co/gLWzzB2L/Whats-App-Image-2025-12-31-at-11-03-17-PM.jpg"><p>My favorite place ❤️</p></div>
+    <div class="polaroid"><img src="https://i.ibb.co/HRPP102/Whats-App-Image-2025-12-31-at-11-03-12-PM.jpg"><p>That smile 😍</p></div>
+    <div class="polaroid"><img src="https://i.ibb.co/DH13b4TB/Whats-App-Image-2025-12-31-at-11-03-07-PM.jpg"><p>Always us ✨</p></div>
+    <div class="polaroid"><img src="https://i.ibb.co/wZRVRB45/Whats-App-Image-2025-12-31-at-11-03-04-PM.jpg"><p>Forever energy 💕</p></div>
+  </div>
+  <div class="text-center mt-8">
+    <button class="btn" onclick="next()">One Last Thing</button>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="card step">
+  <div class="text-center">
+    <div class="text-5xl mb-4">🥂</div>
+    <h1 class="text-4xl mb-4">My Wish For You</h1>
+    <p>May 2026 bring you happiness, peace, success, and endless love.</p>
+
+    <button class="btn mt-4" id="unlockNote" onclick="unlockNote()">💌 Unlock My Heart</button>
+
+    <div id="loveNote" class="hidden mt-6 bg-white/10 p-6 rounded-xl text-lg">
+      Shreya,<br><br>
+      Loving you has been the most beautiful part of my life.
+      No matter where life takes us in 2026 and beyond,
+      I promise to choose you — always.<br><br>
+      Yours forever,<br>
+      <strong>Devansh ❤️</strong>
+    </div>
+
+    <div id="surprise" class="hidden mt-10">
+      <img src="https://i.ibb.co/gLWzzB2L/Whats-App-Image-2025-12-31-at-11-03-17-PM.jpg"
+        style="width:100%;max-width:720px;max-height:70vh;object-fit:cover;
+        box-shadow:0 0 80px rgba(255,120,150,.6)"
+        class="mx-auto rounded-2xl">
+      <h2 class="text-4xl mt-8">Happy New Year 2026, Shreya ❤️</h2>
+      <p class="mt-4">Forever yours,<br><strong>Devansh</strong></p>
+    </div>
+
+    <button class="btn mt-6" id="celebrate" onclick="finale()">Welcome 2026, My Love</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const steps = document.querySelectorAll('.step');
+let index = 0;
+steps[0].style.display = 'block';
+
+// ✅ AUDIO START
+let musicStarted = false;
+function startMusic() {
+  if (!musicStarted) {
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.3;
+    music.play().catch(() => {});
+    musicStarted = true;
+  }
+}
+
+// Attach music start to all buttons
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', startMusic);
+});
+
+function next() {
+  gsap.to(steps[index], {opacity:0, scale:.9, duration:.4, onComplete:()=>{
+    steps[index].style.display='none';
+    index++;
+    steps[index].style.display='block';
+
+    steps[index].scrollIntoView({behavior:'smooth', block:'center'});
+    gsap.fromTo(steps[index],{opacity:0, scale:.9},{opacity:1, scale:1, duration:.6});
+  }});
+}
+
+function unlockNote() {
+  document.getElementById('unlockNote').style.display = 'none';
+  const note = document.getElementById('loveNote');
+  note.classList.remove('hidden');
+  gsap.fromTo(note,{opacity:0,y:20},{opacity:1,y:0,duration:1});
+}
+
+function finale(){
+  document.getElementById('celebrate').style.display='none';
+  document.getElementById('surprise').classList.remove('hidden');
+
+  gsap.fromTo("#surprise img",{opacity:0,y:40,scale:.95},{opacity:1,y:0,scale:1,duration:1.2});
+
+  confetti({particleCount:200,spread:80,origin:{y:.7}});
+  let end=Date.now()+5000;
+  let i=setInterval(()=>{
+    confetti({particleCount:6,spread:60,origin:{x:Math.random(),y:Math.random()-0.2}});
+    if(Date.now()>end) clearInterval(i);
+  },200);
+}
+
+/* Three.js background hearts */
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true});
+renderer.setSize(innerWidth,innerHeight);
+camera.position.z=5;
+
+const geometry=new THREE.SphereGeometry(0.03,16,16);
+const material=new THREE.MeshBasicMaterial({color:0xff5c8a});
+const hearts=[];
+for(let i=0;i<40;i++){
+  let h=new THREE.Mesh(geometry,material);
+  h.position.set((Math.random()-0.5)*10,(Math.random()-0.5)*10,Math.random()*-10);
+  scene.add(h); hearts.push(h);
+}
+function animate(){
+  requestAnimationFrame(animate);
+  hearts.forEach(h=>{h.position.y+=0.003;if(h.position.y>5)h.position.y=-5;});
+  renderer.render(scene,camera);
+}
+animate();
+</script>
+
+</body>
+</html>
